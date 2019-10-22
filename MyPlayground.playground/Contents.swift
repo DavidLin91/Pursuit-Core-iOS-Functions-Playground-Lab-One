@@ -6,6 +6,9 @@ import UIKit
 
 // Your function here
 
+func double(number x: Double) -> Double {
+    return ( x * 2 )
+}
 
 let testCasesOne: [(Double, Double)] = [
     (input: 3.0, expectedOutput: 6.0),
@@ -14,10 +17,10 @@ let testCasesOne: [(Double, Double)] = [
     (input: 99, expectedOutput: 198)
 ]
 
-//for (input, expectedOutput) in testCasesOne {
-//    let output = double(input)
-//    assert(output == expectedOutput, "Was expecting \(expectedOutput) for input \(input), but got \(output)")
-//}
+for (input, expectedOutput) in testCasesOne {
+    let output = double(number: input)
+    assert(output == expectedOutput, "Was expecting \(expectedOutput) for input \(input), but got \(output)")
+}
 
 
 
@@ -25,7 +28,20 @@ let testCasesOne: [(Double, Double)] = [
 
 // Write a function named smallest(of:and:) that takes in two Doubles and returns the smaller number
 
-// Your function here
+func smallest(of num1: Double, and num2: Double) ->  Double {
+    var smallerNum = Double(0)
+    if num1 < num2 {
+        smallerNum = num1
+        print("The smaller number is \(num1)")
+    } else {
+        if num2 < num1 {
+            smallerNum = num2
+            print("The smaller number is \(num2)")
+        }
+    }
+    return smallerNum
+}
+
 
 let testCasesTwo: [(Double, Double, Double)] = [
     (inputOne: 8.0, inputTwo: 3.0, expectedOutput: 3.0),
@@ -34,16 +50,20 @@ let testCasesTwo: [(Double, Double, Double)] = [
     (inputOne: 2.3, inputTwo: 2.03, expectedOutput: 2.03)
 ]
 
-//for (inputOne, inputTwo, expectedOutput) in testCasesTwo {
-//    let output = smallest(of: inputOne, and: inputTwo)
-//    assert(output == expectedOutput, "Was expecting \(expectedOutput) for inputs \(inputOne) and \(inputTwo) but got \(output)")
-//}
+for (inputOne, inputTwo, expectedOutput) in testCasesTwo {
+    let output = smallest(of: inputOne, and: inputTwo)
+    assert(output == expectedOutput, "Was expecting \(expectedOutput) for inputs \(inputOne) and \(inputTwo) but got \(output)")
+}
 
 // Question Three
 
 // Write a function named smallestValue(in:) that takes in an array of Doubles and returns the smallest Double
 
-// Your function here
+func smallestValue(in anArray: [Double]) -> Double {
+    var smallestNumArray = Double(0)
+    smallestNumArray = anArray.min() ?? 0.0
+    return smallestNumArray
+}
 
 let testCasesThree: [([Double], Double)] = [
     (input: [1.0,2,3,4,5,5], expectedOutput: 1.0),
@@ -52,10 +72,10 @@ let testCasesThree: [([Double], Double)] = [
     (input: [-4,-59,-348,-34,-4], expectedOutput: -348),
 ]
 
-//for (input, expectedOutput) in testCasesThree {
-//    let output = smallestValue(in: input)
-//    assert(output == expectedOutput, "Was expecting \(expectedOutput) for input \(input), but got \(output)")
-//}
+for (input, expectedOutput) in testCasesThree {
+    let output = smallestValue(in: input)
+    assert(output == expectedOutput, "Was expecting \(expectedOutput) for input \(input), but got \(output)")
+}
 
 
 // Question Four
@@ -81,7 +101,15 @@ let testCasesFour: [(Character, String, Int)] = [
 
 // Write a function called removeNils(from:) that takes an array of optional Ints and returns an array with them unwrapped with any nil values removed.
 
-// Your function here
+func removeNils(from anArray: [Int?]) -> [Int]  {
+    var outputInt = [Int]()
+    for num in anArray {
+        if let validInt = num {
+            outputInt.append(validInt)
+        }
+    }
+    return outputInt
+}
 
 let testCasesFive: [([Int?], [Int])] = [
     (input: [1, nil, 9, nil, 10, nil], expectedOutput: [1,9,10]),
@@ -90,8 +118,8 @@ let testCasesFive: [([Int?], [Int])] = [
     (input: [], expectedOutput: []),
 ]
 
-//for (input, expectedOutput) in testCasesFive {
-//    let output = removeNils(from: input)
-//    assert(output == expectedOutput, "Was expecting \(expectedOutput) for input \(input), but got \(output)")
-//}
+for (input, expectedOutput) in testCasesFive {
+    let output = removeNils(from: input)
+    assert(output == expectedOutput, "Was expecting \(expectedOutput) for input \(input), but got \(output)")
+}
 
